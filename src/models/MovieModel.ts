@@ -9,7 +9,7 @@ interface IMovie extends Document {
 }
 
 const MovieSchema: Schema = new Schema({
-    title: { type: String, required: true, unique: true },
+    title: { type: String, required: true },
     overview: { type: String, required: true },
     releaseDate: { type: String, required: true },
     language: { type: String, required: true },

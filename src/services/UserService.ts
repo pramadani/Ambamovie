@@ -1,4 +1,4 @@
-import { User } from "../models/User";
+import { User } from "../models/UserModel";
 
 export class UserService {
     static async register(username: string, name: string, password: string) {
