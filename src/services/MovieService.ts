@@ -10,4 +10,10 @@ export class MovieService {
         if (!movie) throw new Error("Movie not found.");
         return movie;
     }
+
+    static async createMovie(title: string, overview: string, releaseDate: string, language: string, genres: string[]) {
+        const movie = new Movie({ title, overview, releaseDate, language, genres });
+        await movie.save();
+        return movie;
+    }
 }

@@ -8,8 +8,7 @@ export class UserController {
             const user = await UserService.register(username, name, password);
             res.status(201).json(user);
         } catch (error) {
-            const err = error as Error;
-            res.status(400).json({ message: err.message });
+            res.status(400).json(error);
         }
     }
 
@@ -19,8 +18,7 @@ export class UserController {
             const user = await UserService.login(username, password);
             res.status(200).json(user);
         } catch (error) {
-            const err = error as Error;
-            res.status(401).json({ message: err.message });
+            res.status(401).json(error);
         }
     }
 }

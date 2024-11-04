@@ -7,8 +7,7 @@ export class MovieController {
             const movies = await MovieService.getMovies();
             res.status(200).json(movies);
         } catch (error) {
-            const err = error as Error;
-            res.status(500).json({ message: err.message });
+            res.status(500).json(error);
         }
     }
 
@@ -18,8 +17,17 @@ export class MovieController {
             const movie = await MovieService.getMovie(id);
             res.status(200).json(movie);
         } catch (error) {
-            const err = error as Error;
-            res.status(404).json({ message: err.message });
+            res.status(404).json(error);
+        }
+    }
+
+    static async createMovie(req: Request, res: Response) {
+        try {
+            const { title, overview, releaseDate, language, genres } = req.body;
+            const newMovie = await MovieService.createMovie(title, overview, releaseDate, language, genres);
+            res.status(201).json(newMovie);
+        } catch (error) {
+            res.status(500).json(error);
         }
     }
 }

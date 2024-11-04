@@ -8,8 +8,7 @@ export class ReviewController {
             const review = await ReviewService.createReview(user, movie, star, comment);
             res.status(201).json(review);
         } catch (error) {
-            const err = error as Error;
-            res.status(400).json({ message: err.message });
+            res.status(400).json(error);
         }
     }
 
@@ -19,8 +18,7 @@ export class ReviewController {
             const reviews = await ReviewService.getReviews(movie);
             res.status(200).json(reviews);
         } catch (error) {
-            const err = error as Error;
-            res.status(500).json({ message: err.message });
+            res.status(500).json(error);
         }
     }
 
@@ -30,8 +28,7 @@ export class ReviewController {
             const review = await ReviewService.updateReview(user, movie, star, comment);
             res.status(200).json(review);
         } catch (error) {
-            const err = error as Error;
-            res.status(404).json({ message: err.message });
+            res.status(404).json(error);
         }
     }
 
@@ -41,8 +38,7 @@ export class ReviewController {
             await ReviewService.deleteReview(user, movie);
             res.status(204).send();
         } catch (error) {
-            const err = error as Error;
-            res.status(404).json({ message: err.message });
+            res.status(404).json(error);
         }
     }
 }
